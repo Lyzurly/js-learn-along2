@@ -1,6 +1,6 @@
 "use strict";
 var debug_script = "thisErrorIsForFun.js";
-var level_canvas = document.getElementById("levelCanvas");
+var level_canvas = document.getElementById("level-canvas");
 var input_area = document.getElementById("jsInput");
 var level001_path = "level001.html";
 var level001_iframe;
@@ -42,6 +42,10 @@ function createLevel() {
     new_iframe.setAttribute("title", "Level 1");
     new_iframe.setAttribute("src", level001_path);
     new_iframe.setAttribute("sandbox", sandbox_params);
+    // Access this in devtools via element.style on the iframe
+    new_iframe.style.display = "flex";
+    new_iframe.style.width = "100%";
+    new_iframe.style.height = "120%";
     level_canvas === null || level_canvas === void 0 ? void 0 : level_canvas.appendChild(new_iframe);
     level001_iframe = new_iframe;
     createInputListener();

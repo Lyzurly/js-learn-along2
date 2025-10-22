@@ -1,5 +1,6 @@
 const debug_script: string = "thisErrorIsForFun.js";
-const level_canvas: HTMLElement | null = document.getElementById("levelCanvas");
+const level_canvas: HTMLElement | null =
+  document.getElementById("level-canvas");
 const input_area: HTMLInputElement = document.getElementById(
   "jsInput"
 ) as HTMLInputElement;
@@ -56,6 +57,11 @@ function createLevel() {
   new_iframe.setAttribute("title", "Level 1");
   new_iframe.setAttribute("src", level001_path);
   new_iframe.setAttribute("sandbox", sandbox_params);
+
+  // Access this in devtools via element.style on the iframe
+  new_iframe.style.display = "flex";
+  new_iframe.style.width = "100%";
+  new_iframe.style.height = "120%";
 
   level_canvas?.appendChild(new_iframe);
   level001_iframe = new_iframe as HTMLIFrameElement;

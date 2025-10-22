@@ -1,9 +1,19 @@
-html,
-body {
-  /* background-color: rgb(11, 11, 48); */
+html {
+  background-color: rgb(0, 0, 0);
   color: lavender;
+  display: grid;
 }
 
-div {
-  background-color: brown;
+.goal-container {
+  font-weight: 900;
+  display: block;
+  text-align: center;
+}
+
+.gameplay-container {
+  display: flex;
+}
+
+iframe {
+  background-color: aqua;
 }
