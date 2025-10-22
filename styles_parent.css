@@ -1,0 +1,10 @@
+html,
+body {
+  background-color: rgb(11, 11, 48);
+  color: lavender;
+}
+
+textarea {
+  background-color: rgb(10, 35, 34);
+  color: lavender;
+}

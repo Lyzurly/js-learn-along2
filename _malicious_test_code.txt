@@ -1,0 +1,7 @@
+window.parent.postMessage("document.body.style.background='red'; 'changed background!'", "*");
+
+const iframe = document.getElementById("level001");
+  iframe.contentWindow.postMessage(
+    "document.body.innerHTML = '<h1 style=\"color:red\">Parent takeover!</h1>'; 'parent injected!'",
+    "*"
+  );

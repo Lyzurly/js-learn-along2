@@ -1,0 +1,5 @@
+var bodies = document.getElementsByTagName("body");
+    Object.entries(bodies).forEach(function (raw_element) {
+        var element = raw_element[1];
+        element.style.backgroundColor = "pink";
+    });

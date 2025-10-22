@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    // "module": "commonjs",
+    "lib": ["esnext", "ES2024", "dom"],
+    "strict": true
+  }
+}
+
+//     "outDir": "./"
+//   },
+
+//   "watchOptions": {
+//     "watchFile": "useFsEvents",
+//     "watchDirectory": "useFsEvents"
+//   },
+//   "include": ["./*.ts"]
+// }
