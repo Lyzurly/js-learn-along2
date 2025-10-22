@@ -1,7 +1,6 @@
 html {
   background-color: rgb(0, 0, 0);
   color: lavender;
-  display: grid;
 }
 
 .goal-container {
@@ -12,6 +11,7 @@ html {
 
 .gameplay-container {
   display: flex;
+  align-items: center;
 }
 
 iframe {

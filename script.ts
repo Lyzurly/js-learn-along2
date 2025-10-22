@@ -61,7 +61,7 @@ function createLevel() {
   // Access this in devtools via element.style on the iframe
   new_iframe.style.display = "flex";
   new_iframe.style.width = "100%";
-  new_iframe.style.height = "120%";
+  new_iframe.style.height = "170%";
 
   level_canvas?.appendChild(new_iframe);
   level001_iframe = new_iframe as HTMLIFrameElement;

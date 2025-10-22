@@ -1,4 +1,11 @@
 body {
   background-color: skyblue;
   color: black;
+  overflow: hidden;
+  white-space: pre-line;
+}
+
+.coin {
+  margin-right: 2em;
+  margin-left: 2em;
 }
