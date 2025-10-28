@@ -10,5 +10,3 @@ window.addEventListener("message", function (event) {
 // this.position.x + this.width > other.position.x &&
 // this.position.y < other.position.y + other.height &&
 // this.position.y + this.height > other.position.y
-
-person.style.translate = "500px";

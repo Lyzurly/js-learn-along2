@@ -5,6 +5,10 @@ body {
   white-space: pre-line;
 }
 
+#person {
+  translate: 0px;
+}
+
 .coin {
   margin-right: 2em;
   margin-left: 2em;
