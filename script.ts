@@ -7,9 +7,24 @@ const level_size_y: string = "260";
 const input_area: HTMLInputElement = document.getElementById(
   "jsInput"
 ) as HTMLInputElement;
+
 const button_try: HTMLInputElement = document.getElementById(
   "buttonTry"
 ) as HTMLInputElement;
+const button_start_over: HTMLInputElement = document.getElementById(
+  "buttonStartOver"
+) as HTMLInputElement;
+
+const tries_current_ele: HTMLElement = document.getElementById(
+  "triesCurrent"
+) as HTMLElement;
+let tries_current_val: string = tries_current_ele.innerHTML as string;
+
+const tries_total_ele: HTMLElement = document.getElementById(
+  "triesTotal"
+) as HTMLElement;
+const tries_total_val: string = tries_total_ele.innerHTML as string;
+
 const level001_path: string = "level001.html";
 let level001_iframe: HTMLIFrameElement;
 let level001_window: Window;
@@ -57,9 +72,22 @@ createInputListener();
 
 function createInputListener() {
   button_try.addEventListener("click", function (event) {
-    let input_to_send: string = input_area.value;
-    level001_iframe.contentWindow?.postMessage(input_to_send, correct_origin);
+    sendUserInputToLevel();
+    tries_current_val = incrementString(tries_current_val);
+    tries_current_ele.innerHTML = tries_current_val;
   });
+}
+
+function sendUserInputToLevel() {
+  let input_to_send: string = input_area.value;
+  level001_iframe.contentWindow?.postMessage(input_to_send, correct_origin);
+}
+
+function incrementString(string_to_inc: string): string {
+  let value: number = parseInt(string_to_inc, 10);
+  let new_val: number = +(value += 1);
+  let new_val_as_string: string = Math.floor(new_val).toString(10);
+  return new_val_as_string;
 }
 
 function createLevel() {
