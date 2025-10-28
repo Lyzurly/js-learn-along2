@@ -2,8 +2,8 @@
 var person = document.getElementById("person");
 console.log("level 1 is ready!");
 window.addEventListener("message", function (event) {
-  console.log("Child Origin is set to", window.origin);
-  var result = Function(event.data)();
+    console.log("Child Origin is set to", window.origin);
+    var result = Function(event.data)();
 });
 // TODO: use this to check collision, but do it flash card style :>
 // this.position.x < other.position.x + other.width &&
