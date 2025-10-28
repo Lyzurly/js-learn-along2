@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="styles_parent.css" />
   </head>
   <body>
-    <h2>Parent page</h2>
+    <div class="header-container">
+      <h2 class="header-itself">Code JS to Win!</h2>
+      <div class="button-container">
+        <button id="buttonTry">Try</button>
+      </div>
+      <div class="progress-container">
+        <div class="tries-container">
+          <p>Current Tries <b id="triesCurrent">0</b></p>
+          <p>Total Tries <b id="triesTotal">0</b></p>
+        </div>
+      </div>
+    </div>
     <textarea id="jsInput" rows="8" cols="40" spellcheck="false"></textarea>
     <div id="level-canvas"></div>
   </body>

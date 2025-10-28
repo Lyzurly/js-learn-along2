@@ -4,6 +4,9 @@ const level_canvas: HTMLElement | null =
 const input_area: HTMLInputElement = document.getElementById(
   "jsInput"
 ) as HTMLInputElement;
+const button_try: HTMLInputElement = document.getElementById(
+  "buttonTry"
+) as HTMLInputElement;
 const level001_path: string = "level001.html";
 let level001_iframe: HTMLIFrameElement;
 let level001_window: Window;
@@ -47,6 +50,15 @@ function checkIfDebug() {
   });
 }
 
+createInputListener();
+
+function createInputListener() {
+  button_try.addEventListener("click", function (event) {
+    let input_to_send: string = input_area.value;
+    level001_iframe.contentWindow?.postMessage(input_to_send, correct_origin);
+  });
+}
+
 function createLevel() {
   let new_iframe: HTMLElement = create_element(
     "iframe",
@@ -65,15 +77,6 @@ function createLevel() {
 
   level_canvas?.appendChild(new_iframe);
   level001_iframe = new_iframe as HTMLIFrameElement;
-
-  createInputListener();
-}
-
-function createInputListener() {
-  input_area.addEventListener("change", function (event) {
-    let input_to_send: string = input_area.value;
-    level001_iframe.contentWindow?.postMessage(input_to_send, correct_origin);
-  });
 }
 
 // TODO: Add an attributes param that take multiple params

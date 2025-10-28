@@ -13,3 +13,26 @@ textarea {
 /* #level-canvas {
   display: grid;
 } */
+
+.header-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.header-itself {
+  display: grid;
+  align-content: space-around;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button-container {
+  display: grid;
+  align-content: space-around;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  font-size: xx-large;
+}

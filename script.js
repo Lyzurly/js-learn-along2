@@ -2,6 +2,7 @@
 var debug_script = "thisErrorIsForFun.js";
 var level_canvas = document.getElementById("level-canvas");
 var input_area = document.getElementById("jsInput");
+var button_try = document.getElementById("buttonTry");
 var level001_path = "level001.html";
 var level001_iframe;
 var level001_window;
@@ -37,6 +38,14 @@ function checkIfDebug() {
         }
     });
 }
+createInputListener();
+function createInputListener() {
+    button_try.addEventListener("click", function (event) {
+        var _a;
+        var input_to_send = input_area.value;
+        (_a = level001_iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.postMessage(input_to_send, correct_origin);
+    });
+}
 function createLevel() {
     var new_iframe = create_element("iframe", "level", "level001");
     new_iframe.setAttribute("title", "Level 1");
@@ -48,14 +57,6 @@ function createLevel() {
     new_iframe.style.height = "170%";
     level_canvas === null || level_canvas === void 0 ? void 0 : level_canvas.appendChild(new_iframe);
     level001_iframe = new_iframe;
-    createInputListener();
-}
-function createInputListener() {
-    input_area.addEventListener("change", function (event) {
-        var _a;
-        var input_to_send = input_area.value;
-        (_a = level001_iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.postMessage(input_to_send, correct_origin);
-    });
 }
 // TODO: Add an attributes param that take multiple params
 function create_element(element_type, class_name, id_name) {
