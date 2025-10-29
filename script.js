@@ -2,7 +2,7 @@
 var debug_script = "thisErrorIsForFun.js";
 var level_canvas = document.getElementById("levelCanvas");
 var level_size_x = "600";
-var level_size_y = "260";
+var level_size_y = "220";
 var input_area = document.getElementById("jsInput");
 var button_try = document.getElementById("buttonTry");
 var button_start_over = document.getElementById("buttonStartOver");
@@ -60,6 +60,9 @@ function sendUserInputToLevel() {
     var _a;
     var input_to_send = input_area.value;
     (_a = level001_iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.postMessage(input_to_send, correct_origin);
+}
+function testFunction() {
+    console.log("The test function passed!");
 }
 function incrementString(string_to_inc) {
     var value = parseInt(string_to_inc, 10);

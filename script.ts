@@ -2,7 +2,7 @@ const debug_script: string = "thisErrorIsForFun.js";
 
 const level_canvas: HTMLElement | null = document.getElementById("levelCanvas");
 const level_size_x: string = "600";
-const level_size_y: string = "260";
+const level_size_y: string = "220";
 
 const input_area: HTMLInputElement = document.getElementById(
   "jsInput"

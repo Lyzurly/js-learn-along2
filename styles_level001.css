@@ -1,8 +1,6 @@
 body {
   background-color: skyblue;
   color: black;
-  overflow: hidden;
-  white-space: pre-line;
 }
 
 #person {
