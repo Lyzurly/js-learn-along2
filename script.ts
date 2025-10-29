@@ -68,13 +68,17 @@ function checkIfDebug() {
   });
 }
 
-createInputListener();
+createButtonListeners();
 
-function createInputListener() {
+function createButtonListeners() {
   button_try.addEventListener("click", function (event) {
     sendUserInputToLevel();
     tries_current_val = incrementString(tries_current_val);
     tries_current_ele.innerHTML = tries_current_val;
+  });
+
+  button_start_over.addEventListener("click", function (event) {
+    location.reload();
   });
 }
 
