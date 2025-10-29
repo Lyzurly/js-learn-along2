@@ -1,7 +1,9 @@
 const person: HTMLElement = document.getElementById("person") as HTMLElement;
 const coins: HTMLCollectionOf<Element> =
   document.getElementsByClassName("coin");
+const taco: HTMLElement = document.getElementById("taco") as HTMLElement;
 
+const coins_to_win: string = "3";
 const coins_ele: HTMLElement = document.getElementById(
   "goal_val_01"
 ) as HTMLElement;
@@ -24,21 +26,40 @@ function setcollisionTick() {
 }
 
 window.addEventListener("collisionTick", (event) => {
-  let coin_to_collect: Element = coinCollected() as Element;
-  if (coin_to_collect) {
-    updateCoin(coin_to_collect);
-    coins_val = incrementCoins(coins_val);
-    coins_ele.innerHTML = coins_val;
-  }
+  handleCoins();
+  handleTacos();
 });
+
+function handleCoins() {
+  let coin_to_collect: Element = coinCollected() as Element; // assign if coin collected
+  if (coin_to_collect) {
+    // If a coin IS collected...
+    updateCoin(coin_to_collect); // hide it
+    coins_val = incrementCoins(coins_val); // inc coin count
+    coins_ele.innerHTML = coins_val; // update coin count in html
+  }
+}
+
+function handleTacos() {
+  if (
+    playerGotThing(taco) &&
+    isString1GreaterThanString2(coins_val, coins_to_win) &&
+    !taco.className.includes("hidden")
+  ) {
+    console.log("Bought tacos!");
+    taco.className += "hidden";
+  } else {
+    console.log("Can't buy tacos");
+  }
+}
 
 function coinCollected(): Element | null {
   let collided_coin: Element | null = null;
 
   Object.entries(coins).forEach((DOMCoin: [string, Element]) => {
     let hasCollected: boolean = false;
-    if (DOMCoin[1].className != "coin hidden") {
-      hasCollected = playerGotCoin(DOMCoin[1]);
+    if (!DOMCoin[1].className.includes("hidden")) {
+      hasCollected = playerGotThing(DOMCoin[1]);
     }
     if (hasCollected) {
       collided_coin = DOMCoin[1];
@@ -47,19 +68,19 @@ function coinCollected(): Element | null {
   return collided_coin;
 }
 
-function playerGotCoin(coin_to_get: Element): boolean {
-  let coin_got: boolean = false;
+function playerGotThing(thing_to_get: Element): boolean {
+  let thing_got: boolean = false;
   let rect_person: DOMRect = person.getBoundingClientRect();
-  let rect_coin: DOMRect = coin_to_get.getBoundingClientRect();
+  let rect_thing: DOMRect = thing_to_get.getBoundingClientRect();
   if (
-    rect_person.x < rect_coin.right &&
-    rect_person.y < rect_coin.bottom &&
-    rect_person.right > rect_coin.x &&
-    rect_person.bottom > rect_coin.y
+    rect_person.x < rect_thing.right &&
+    rect_person.y < rect_thing.bottom &&
+    rect_person.right > rect_thing.x &&
+    rect_person.bottom > rect_thing.y
   ) {
-    coin_got = true;
+    thing_got = true;
   }
-  return coin_got;
+  return thing_got;
 }
 
 function updateCoin(coin_to_update: Element) {
@@ -71,6 +92,15 @@ function incrementCoins(string_to_inc: string): string {
   let new_val: number = +(value += 1);
   let new_val_as_string: string = Math.floor(new_val).toString(10);
   return new_val_as_string;
+}
+
+function isString1GreaterThanString2(
+  number1: string,
+  number2: string
+): boolean {
+  let number1_int: number = parseInt(number1, 10);
+  let number2_int: number = parseInt(number2, 10);
+  return number1_int >= number2_int;
 }
 
 // TODO: use this to check collision, but do it flash card style :>
