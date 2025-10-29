@@ -5,7 +5,7 @@ const coins: HTMLCollectionOf<Element> =
 const coins_ele: HTMLElement = document.getElementById(
   "goal_val_01"
 ) as HTMLElement;
-const coins_val: string = coins_ele.innerHTML;
+let coins_val: string = coins_ele.innerHTML;
 
 console.log("level 1 is ready!");
 
@@ -27,7 +27,8 @@ window.addEventListener("collisionTick", (event) => {
   let coin_to_collect: Element = coinCollected() as Element;
   if (coin_to_collect) {
     updateCoin(coin_to_collect);
-    coins_ele.innerHTML = incrementCoins(coins_val);
+    coins_val = incrementCoins(coins_val);
+    coins_ele.innerHTML = coins_val;
   }
 });
 
@@ -36,7 +37,7 @@ function coinCollected(): Element | null {
 
   Object.entries(coins).forEach((DOMCoin: [string, Element]) => {
     let hasCollected: boolean = false;
-    if (DOMCoin[1].className != "hidden") {
+    if (DOMCoin[1].className != "coin hidden") {
       hasCollected = playerGotCoin(DOMCoin[1]);
     }
     if (hasCollected) {
@@ -62,7 +63,7 @@ function playerGotCoin(coin_to_get: Element): boolean {
 }
 
 function updateCoin(coin_to_update: Element) {
-  coin_to_update.className = "hidden";
+  coin_to_update.className += " hidden";
 }
 
 function incrementCoins(string_to_inc: string): string {

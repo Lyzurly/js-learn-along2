@@ -19,14 +19,15 @@ window.addEventListener("collisionTick", function (event) {
     var coin_to_collect = coinCollected();
     if (coin_to_collect) {
         updateCoin(coin_to_collect);
-        coins_ele.innerHTML = incrementCoins(coins_val);
+        coins_val = incrementCoins(coins_val);
+        coins_ele.innerHTML = coins_val;
     }
 });
 function coinCollected() {
     var collided_coin = null;
     Object.entries(coins).forEach(function (DOMCoin) {
         var hasCollected = false;
-        if (DOMCoin[1].className != "hidden") {
+        if (DOMCoin[1].className != "coin hidden") {
             hasCollected = playerGotCoin(DOMCoin[1]);
         }
         if (hasCollected) {
@@ -48,7 +49,7 @@ function playerGotCoin(coin_to_get) {
     return coin_got;
 }
 function updateCoin(coin_to_update) {
-    coin_to_update.className = "hidden";
+    coin_to_update.className += " hidden";
 }
 function incrementCoins(string_to_inc) {
     var value = parseInt(string_to_inc, 10);

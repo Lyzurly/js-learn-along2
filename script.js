@@ -61,9 +61,6 @@ function sendUserInputToLevel() {
     var input_to_send = input_area.value;
     (_a = level001_iframe.contentWindow) === null || _a === void 0 ? void 0 : _a.postMessage(input_to_send, correct_origin);
 }
-function testFunction() {
-    console.log("The test function passed!");
-}
 function incrementString(string_to_inc) {
     var value = parseInt(string_to_inc, 10);
     var new_val = +(value += 1);
