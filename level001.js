@@ -5,6 +5,14 @@ window.addEventListener("message", function (event) {
     console.log("Child Origin is set to", window.origin);
     var result = Function(event.data)();
 });
+var Coin = /** @class */ (function () {
+    function Coin() {
+    }
+    return Coin;
+}());
+constructor;
+{ }
+console.log("hello");
 // TODO: use this to check collision, but do it flash card style :>
 // this.position.x < other.position.x + other.width &&
 // this.position.x + this.width > other.position.x &&
